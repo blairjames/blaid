@@ -10,7 +10,7 @@ Blaid then mirrors the data across two or three hardware devices according to th
 
 Any directories not assigned to a "Tier" are ignored by Blaid and stored according to the operating system configuration.
 
-Blaid runs as a systemd service so can be managed via "systemctl"
+#### Blaid runs as a systemd service so can be managed via "systemctl"
 
 <br/>
 
