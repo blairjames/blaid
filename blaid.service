@@ -1,0 +1,16 @@
+[Unit]
+Description=Blaid data redundancy solution
+StartLimitBurst=3
+
+[Service]
+ExecStart=$GOPATH/blaid/blaid
+ExecStop=/bin/kill $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+StartLimitIntervalSec=30s
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
