@@ -1,6 +1,6 @@
 # Blaid
 
-A simple, more specific alternative to RAID that prevents unnecessary, redundant storage of non-critical data as well as excessive disk space and IO operations dedicated to parity.
+A simple, more specific alternative to RAID that prevents unnecessary redundant storage of non-critical data as well as excessive disk space and IO operations dedicated to parity.
 
 Blaid operates at the directory level to store data redundantly across multiple hardware devices according to user-defined priority.
 
