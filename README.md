@@ -12,6 +12,8 @@ Any directories not assigned to a "Tier" are ignored by Blaid and stored accordi
 
 #### Blaid runs as a systemd service so can be managed via "systemctl"
 
+#### Logs can be viewed via "journalctl"
+
 <br/>
 
 ### Example of operation
