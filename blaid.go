@@ -76,13 +76,17 @@ func driveUsage(drive string) int {
 	cmd := "df --output=pcent " + drive + " | tr -dc '0-9'"
 	out, err := exec.Command("bash", "-c", cmd).Output()
 	if err != nil {
-		writeLog("ERROR! failed to get disk usage of " + drive + " running: " +
-			cmd + "\n" + err.Error())
+		errorMessage := "ERROR! failed to get disk usage of " + drive + " running: " +
+			cmd + "\n" + err.Error()
+		writeLog(errorMessage)
+		log.Fatal(errorMessage)
 	}
 	usage, err := strconv.Atoi(string(out))
 	if err != nil {
-		writeLog("ERROR! failed to convert disk usage to int for " + drive +
-			"\n" + err.Error())
+		errorMessage := "ERROR! failed to convert disk usage to int for " + drive +
+			"\n" + err.Error()
+		writeLog(errorMessage)
+		log.Fatal(errorMessage)
 	}
 	return usage
 }
@@ -142,12 +146,13 @@ func main() {
 				"Value of deleteDestinationFiles: " + strconv.FormatBool(deleteDestinationFiles) + "\n" +
 				"----- Syncing tier one directories to " + drive + " -----")
 			runSync(tierOneDirs(), drive, deleteDestinationFiles)
-		} // for
+		}
 		writeLog("----- Syncing tier two directories to " + redundantDriveOne + " -----\n" +
 			"Value of deleteDestinationFiles: " + strconv.FormatBool(deleteDestinationFiles))
 		runSync(tierTwoDirs(), redundantDriveOne, deleteDestinationFiles)
+
 		// Sleep for one minute
 		writeLog("Sleeping for one minute")
 		time.Sleep(time.Second * 60)
-	} // infinite loop
+	}
 }
